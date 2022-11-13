@@ -1,15 +1,6 @@
 units:
   h: 17.75
   w: 17.75
-  via_offset: 1.27
-
-
-_flipDiodes:
-  rows:
-    home.footprints.diode.anchor.shift: [, .5h - .85]
-    extras.footprints.diode.anchor.shift: [, .5h - .85]
-
-
 
 points:
   mirror:
@@ -19,19 +10,14 @@ points:
     matrix:
       key:
         mirror.footprints:
-          # diode:
-          #   anchor.shift: [.25w + .65, ]
         footprints:
           switch: 
             type: xswitch
             nets.to: =colrow
             nets.from: =column_net
-            # anchor.rotate: -90
-            # params.side: F
           diode:
             type: diode
             anchor:
-              # shift: [-.25w - .65, -.5h + .85]
               shift: [0, -4.75]
               rotate: 180
             nets:
@@ -42,13 +28,6 @@ points:
               via: false
               side: front
               padSize: 1.2
-          # rgb:
-          #   type: rgb
-          #   nets:
-          #     din: din
-          #     dout: dout
-          #   anchor.shift: [0, -4.8]
-          #   nets.VCC: 3V3
 
       columns:
         pinky:
@@ -68,11 +47,9 @@ points:
           spread: w
       rows:
         extras:
-          # $extends: _xswitch
           padding: h
           row_net: r3
           mirror.row_net: r7
-          # shift: [.5w, 0]
 
         bottom:
           padding: h
@@ -102,6 +79,7 @@ points.zones.mcu:
         params:
           orientation: up
         nets:
+          # rows
           F4: r0
           F5: r4
           F6: r1
@@ -167,28 +145,12 @@ outlines:
         points: 
           - ref: matrix_pinky_top
             shift: [-1.5w - 2, .5h + .5]
-          # - ref: matrix_pinky_top
-          #   shift: [-1.25w - 1, .5h + .5]
-          # - ref: matrix_pinky_top
-          #   shift: [-1.25w, .5h - 1]
-          # - ref: matrix_pinky_top
-          #   shift: [-.75w, .5h - 1]
-          # - ref: matrix_pinky_top
-          #   shift: [-.75w + 1, .5h + .5]
-          # - ref: matrix_inner_top
-          #   shift: [.5w + .5, .5h + .5]
-          # - ref: mirror_matrix_inner_top
-          #   shift: [.5w + .5, .5h + .5]
           - ref: mirror_matrix_pinky_top
             shift: [-.5w - .5, .5h + .5]
           - ref: mirror_matrix_pinky_extras
             shift: [-.5w - .5, -.5h - .5]
           - ref: matrix_pinky_extras
             shift: [-.5w - .5, -.5h - .5]
-          # - ref: mirror_matrix_inner_extras
-          #   shift: [.5w + .5, -.5h - .5]
-          # - ref: matrix_inner_extras
-          #   shift: [.5w + .5, -.5h - .5]
           - ref: matrix_pinky_extras
             shift: [-.75w + 1, -.5h - .5]
           - ref: matrix_pinky_extras
