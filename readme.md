@@ -1,5 +1,5 @@
 # CREPE
-## 40 key ultrathin ortho
+## 40% ultrathin ortholinear keyboard
 ### UNTESTED PROTOTYPE
 
 ![render](rev0/images/front.png) 
