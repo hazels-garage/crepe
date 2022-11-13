@@ -117,28 +117,7 @@ points.zones.mcu:
           B4: c3
           B5: c4
 
-# points.zones.shiftReg:
-#   key:
-#     asym: left
-#     footprints:
-#       - type: 74hc595
-#         anchor:
-#           ref:
-#             - matrix_pinky_home
-#           shift: [-w + 2, -3]
-#           rotate: -90
-#         nets:
-#           VCC: '3V3'
-#           SCLR: '3V3'
-#           MISO: MISO
-#           A: c7
-#           B: c6
-#           C: c5
-#           D: c4
-#           E: c3
-#           F: c2
-#           G: c1
-#           H: c0       
+     
 points.zones.power:
   key:
     asym: left
@@ -149,8 +128,37 @@ points.zones.power:
           shift: [-1w, -.5h + 2.5]
           rotate: 180
         nets.to: GND
-        nets.from: BAT-
-
+        nets.from: BAT
+      - type: pad
+        anchor:
+          ref: matrix_pinky_bottom
+          shift: [-w - 1, 9]
+          rotate: 90
+        nets.net: RAW
+        params:
+          back: false
+          text: '+'
+          width: 2
+      - type: via
+        anchor:
+          ref: matrix_pinky_bottom
+          shift: [-w - 1, 9]
+        nets.net: RAW
+      - type: pad
+        anchor: 
+          ref: matrix_pinky_bottom
+          shift: [-w + 1, 9]
+          rotate: 90
+        nets.net: BAT
+        params:
+          text: '-'
+          width: 2
+          back: false
+      - type: via
+        anchor:
+          ref: matrix_pinky_bottom
+          shift: [-w + 1, 9]
+        nets.net: BAT
 
 outlines:
   exports:
@@ -159,6 +167,14 @@ outlines:
         points: 
           - ref: matrix_pinky_top
             shift: [-1.5w - 2, .5h + .5]
+          # - ref: matrix_pinky_top
+          #   shift: [-1.25w - 1, .5h + .5]
+          # - ref: matrix_pinky_top
+          #   shift: [-1.25w, .5h - 1]
+          # - ref: matrix_pinky_top
+          #   shift: [-.75w, .5h - 1]
+          # - ref: matrix_pinky_top
+          #   shift: [-.75w + 1, .5h + .5]
           # - ref: matrix_inner_top
           #   shift: [.5w + .5, .5h + .5]
           # - ref: mirror_matrix_inner_top
@@ -174,13 +190,13 @@ outlines:
           # - ref: matrix_inner_extras
           #   shift: [.5w + .5, -.5h - .5]
           - ref: matrix_pinky_extras
-            shift: [-.75w, -.5h - .5]
+            shift: [-.75w + 1, -.5h - .5]
           - ref: matrix_pinky_extras
-            shift: [-.75w - 1, -.5h + 1]
+            shift: [-.75w, -.5h + 1]
           - ref: matrix_pinky_extras
-            shift: [-1.25w + 1, -.5h + 1]
+            shift: [-1.25w, -.5h + 1]
           - ref: matrix_pinky_extras
-            shift: [-1.25w, -.5h - .5]
+            shift: [-1.25w - 1, -.5h - .5]
           - ref: matrix_pinky_extras
             shift: [-1.5w - 2, -.5h - .5]
     pcb:
