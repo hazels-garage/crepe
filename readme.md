@@ -13,7 +13,7 @@
 
 ## FIRMWARE
 
-QMK: Comming Soon
+[QMK](https://github.com/jasonhazel/qmk_hazel/tree/master/keyboards/jasonhazel/crepe)
 
 ZMK: Comming Soon
 
