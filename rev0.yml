@@ -1,0 +1,196 @@
+units:
+  h: 17.75
+  w: 17.75
+  via_offset: 1.27
+
+
+_flipDiodes:
+  rows:
+    home.footprints.diode.anchor.shift: [, .5h - .85]
+    extras.footprints.diode.anchor.shift: [, .5h - .85]
+
+
+
+points:
+  mirror:
+    ref: matrix_inner_home
+    distance: w
+  zones:
+    matrix:
+      key:
+        mirror.footprints:
+          # diode:
+          #   anchor.shift: [.25w + .65, ]
+        footprints:
+          switch: 
+            type: xswitch
+            nets.to: =colrow
+            nets.from: =column_net
+            # anchor.rotate: -90
+            # params.side: F
+          diode:
+            type: diode
+            anchor:
+              # shift: [-.25w - .65, -.5h + .85]
+              shift: [0, -4.75]
+              rotate: 180
+            nets:
+              from: =colrow
+              to: =row_net
+            params:
+              tht: false
+              via: false
+              side: front
+              padSize: 1.2
+          # rgb:
+          #   type: rgb
+          #   nets:
+          #     din: din
+          #     dout: dout
+          #   anchor.shift: [0, -4.8]
+          #   nets.VCC: 3V3
+
+      columns:
+        pinky:
+          key.column_net: c0
+          spread: w
+        ring:
+          key.column_net: c1
+          spread: w
+        middle:
+          key.column_net: c2
+          spread: w
+        index:
+          key.column_net: c3
+          spread: w
+        inner:
+          key.column_net: c4
+          spread: w
+      rows:
+        extras:
+          # $extends: _xswitch
+          padding: h
+          row_net: r3
+          mirror.row_net: r7
+          # shift: [.5w, 0]
+
+        bottom:
+          padding: h
+          row_net: r2
+          mirror.row_net: r6
+        home: 
+          padding: h
+          row_net: r1
+          mirror.row_net: r5
+        top:
+          padding: h
+          row_net: r0
+          mirror.row_net: r4
+
+
+points.zones.mcu:
+  key:
+    asym: left
+    footprints:
+      - type: controller
+        anchor:
+          ref: 
+            - matrix_pinky_home
+            - matrix_pinky_top
+          shift: [-w - .75,0]
+          rotate: -90
+        params:
+          orientation: up
+        nets:
+          F4: r0
+          F5: r4
+          F6: r1
+          F7: r5
+          B1: r2
+          B3: r6
+          B2: r3
+          B6: r7
+          # cols
+          C6: c0
+          D7: c1
+          E6: c2
+          B4: c3
+          B5: c4
+
+# points.zones.shiftReg:
+#   key:
+#     asym: left
+#     footprints:
+#       - type: 74hc595
+#         anchor:
+#           ref:
+#             - matrix_pinky_home
+#           shift: [-w + 2, -3]
+#           rotate: -90
+#         nets:
+#           VCC: '3V3'
+#           SCLR: '3V3'
+#           MISO: MISO
+#           A: c7
+#           B: c6
+#           C: c5
+#           D: c4
+#           E: c3
+#           F: c2
+#           G: c1
+#           H: c0       
+points.zones.power:
+  key:
+    asym: left
+    footprints:
+      - type: slider
+        anchor:
+          ref: matrix_pinky_extras
+          shift: [-1w, -.5h + 2.5]
+          rotate: 180
+        nets.to: GND
+        nets.from: BAT-
+
+
+outlines:
+  exports:
+    _pcb:
+      - type: polygon
+        points: 
+          - ref: matrix_pinky_top
+            shift: [-1.5w - 2, .5h + .5]
+          # - ref: matrix_inner_top
+          #   shift: [.5w + .5, .5h + .5]
+          # - ref: mirror_matrix_inner_top
+          #   shift: [.5w + .5, .5h + .5]
+          - ref: mirror_matrix_pinky_top
+            shift: [-.5w - .5, .5h + .5]
+          - ref: mirror_matrix_pinky_extras
+            shift: [-.5w - .5, -.5h - .5]
+          - ref: matrix_pinky_extras
+            shift: [-.5w - .5, -.5h - .5]
+          # - ref: mirror_matrix_inner_extras
+          #   shift: [.5w + .5, -.5h - .5]
+          # - ref: matrix_inner_extras
+          #   shift: [.5w + .5, -.5h - .5]
+          - ref: matrix_pinky_extras
+            shift: [-.75w, -.5h - .5]
+          - ref: matrix_pinky_extras
+            shift: [-.75w - 1, -.5h + 1]
+          - ref: matrix_pinky_extras
+            shift: [-1.25w + 1, -.5h + 1]
+          - ref: matrix_pinky_extras
+            shift: [-1.25w, -.5h - .5]
+          - ref: matrix_pinky_extras
+            shift: [-1.5w - 2, -.5h - .5]
+    pcb:
+      - type: outline
+        name: _pcb
+        fillet: 1
+
+pcbs:
+  crepe:
+    outlines:
+      pcb.outline: pcb
+
+    footprints:
