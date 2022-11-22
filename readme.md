@@ -2,7 +2,6 @@
 
 
 ## 40% ultrathin ortholinear keyboard
-### UNTESTED PROTOTYPE
 
 ![render](rev0/images/built.jpg) 
 
