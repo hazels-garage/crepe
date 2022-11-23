@@ -12,6 +12,10 @@
 - 1x [Power Switch](https://mkultra.click/alps-ssss811101/) (optional)
 - 1x Battery (optional)
 
+### PCB Render
+
+![render](images/rev0/crepe-top.png)
+
 ## FIRMWARE
 
 [QMK](https://github.com/jasonhazel/qmk_hazel/tree/master/keyboards/jasonhazel/crepe)
