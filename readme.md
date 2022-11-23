@@ -15,6 +15,7 @@
 ### PCB Render
 
 ![render](images/rev0/crepe-top.png)
+![render](images/rev0/crepe-bottom.png)
 
 ## FIRMWARE
 
