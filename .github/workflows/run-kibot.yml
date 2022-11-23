@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      # - '*.kicad_sch'
-      - '*'
+      - '*.kicad_pcb'
+      # - '*'
       - '*.kibot.yaml'
       - '.github/workflows/run-kibot.yml'
 
