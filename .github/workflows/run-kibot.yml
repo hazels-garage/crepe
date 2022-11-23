@@ -45,7 +45,7 @@ jobs:
         with:
           path: gallery/
       - run: rm -rf pcb_images/*
-      - run: mv gallery/artifact/* images/
+      - run: mv gallery/artifact/* images/${{ matrix.board }}
       - uses: stefanzweifel/git-auto-commit-action@v4.14.1
         with:
           commit_message: "Update gallery (automated)"
